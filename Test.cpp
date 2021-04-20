@@ -52,18 +52,33 @@ TEST_CASE("+= / -=")
 
 TEST_CASE("> / >= / < / <= / == / !=")
 {
-    CHECK_GT(km,cm);
-    CHECK_LT(cm,km);
-    CHECK_GT(hour,minutes);
-    CHECK_LT(minutes,hour);
-    CHECK_GT(ton,kg);
-    CHECK_LT(kg,ton);
-
-    CHECK_GE(km,km);
-    CHECK_LE(km,km);
-    CHECK_EQ(ton, NumberWithUnits(10000, "kg"));
+	// ==
+	CHECK_EQ(ton, NumberWithUnits(10000, "kg"));
     CHECK_EQ(hour, NumberWithUnits(720, "min"));
     CHECK_EQ(USD, NumberWithUnits(9.99, "ILS"));
+
+    // >
+    CHECK_GT(km,cm);
+    CHECK_GT(hour,minutes);
+    CHECK_GT(ton,kg);
+
+    // <
+    CHECK_LT(cm,km);
+    CHECK_LT(minutes,hour);
+    CHECK_LT(kg,ton);
+
+    // >=
+    CHECK_GE(ton,ton);
+    CHECK_GE(km,cm);
+    CHECK_GT(hour,minutes);
+    CHECK_GT(ton,kg);
+
+    // <=
+    CHECK_LE(ton,ton);
+    CHECK_LT(cm,km);
+    CHECK_LT(minutes,hour);
+    CHECK_LT(kg,ton);
+
 
 }
 
